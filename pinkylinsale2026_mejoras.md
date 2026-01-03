@@ -19,3 +19,8 @@ Empecemos...
 
 cambio inicial de prueba
 
+### Base de datos para mejorar la anterior 
+
+que debe llevar  
+
+1. 
