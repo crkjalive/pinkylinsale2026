@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="shortcut icon" href="/ico/ico.ico" type="image/x-icon">
+  <title>Pinkilin 2026</title>
+</head>
+
+<body>
+  <header id="header_container" class="header_container"></header>
+
+  <h1 class="title_web" ><a target="blank_" href="https://www.instagram.com/pinkylin2020/">@Pinkylin2020</a></h1>
+
+  <section class="renta_nav_container">
+
+    <% let THERE=0; let KHRIZ=0; let TOTAL=0; let renta = 66000000; tope = 69718600 %>
+
+    <div class="renta_nav_data">
+      <% data.map( indice => { %>
+        
+        <div style="padding: .5em;">
+
+          <div style="text-transform: lowercase;">
+            <%= indice.payment_method %>
+          </div>
+
+          <div class="mil pesos2">
+            <%= indice.total_sales %>
+          </div>
+
+        </div>
+
+        <% if (indice.payment_method=='NEQUITHERE' || indice.payment_method=='DAVIPLATATHERE' || indice.payment_method == 'BANCOLOMBIA' ) { %>
+          <% THERE += indice.total_sales %>
+        <% } %>
+          
+        <% if (indice.payment_method=='NEQUIKHRIZ' || indice.payment_method=='DAVIPLATAKHRIZ' || indice.payment_method=='BOLD' ) { %>
+          <% KHRIZ += indice.total_sales %>
+        <% } %>
+
+        <% if (indice.payment_method != 'SEPARADO') { %>
+          <% TOTAL += indice.total_sales %>
+        <% } %>
+      <% }) %>
+
+    </div>
+
+    <div class="renta_nav_total">
+
+      <% if (THERE < renta) { %> 
+       <div class="renta lime"> Renta There
+          <div class="mil pesos2"> <%= THERE %> </div>
+          <div class="mil pesos2"> <%= -1 * (THERE - renta) %> </div>
+          <div class="mil pesos2"> <%= tope - THERE %> </div>
+
+        </div>
+      <% } else { %>
+        <div class="renta deep"> Renta There
+          <div class="mil pesos2"> <%= THERE %> </div>
+          <div class="mil pesos2"> <%= -1 * (THERE - renta) %> </div>
+          <div class="mil pesos2"> <%= tope - THERE %> </div>
+        </div>
+      <%}%>
+        
+      <% if (KHRIZ < renta) { %> 
+        <div class="renta lime"> Renta Khriz
+          <div class="mil pesos3"> <%= KHRIZ %> </div>
+          <div class="mil pesos3"> <%= -1 * (KHRIZ - renta) %> </div>
+          <div class="mil pesos2"> <%= tope - KHRIZ %> </div>
+
+        </div>
+      <% } else { %>
+        <div class="renta" > Renta Khriz
+          <div class="mil pesos3"> <%= KHRIZ %> </div>
+          <div class="mil pesos3"> <%= -1 * (KHRIZ - renta) %> </div>
+          <div class="mil pesos2"> <%= tope - KHRIZ %> </div>          
+        </div>
+      <%}%>
+
+      <div class="renta dodger" >
+        <div class="mil pesos2" > <%= TOTAL %> </div>
+        <div class="mil pesos2" > <%= renta %> </div>
+        <div class="mil pesos2" > <%= tope %> </div>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="section_container">
+    <article class="articles letra">App POS registro de ventas</article>
+    <article class="articles letra">
+      <h3><a target="_blank" href="https://instagram.com/pinkylin2020">Instagram</a></h3>
+      <h3><a target="_blank" href="htt= ps://web.whatsapp.com">Whatsapp</a></h3>
+    </article>
+    <article class="articles letra">App Control de inventario</article>
+  </section>
+
+  <footer class="footer_container" id="footer_container"></footer>
+
+  <script src="/js/index.js"></script>
+  <script src="/js/mil.js"></script>
+</body>
+
+</html>

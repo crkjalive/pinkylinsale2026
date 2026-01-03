@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="/ico/ico.ico" type="image/x-icon">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="shortcut icon" href="/ico/ico.ico" type="image/x-icon">
+  <title>Buscar mes</title>
+</head>
+<body>
+  <header id="header_container" class="header_container"></header>
+  <h1 class="title_web">Totales de los registros por día</h1>
+
+  <form class="formularioMonth" action="/day/date" method="post">
+    <select class="selects" name="searchMonth" id="">
+      <option value="enero">Enero</option>
+      <option value="febrero">Febrero</option>
+      <option value="marzo">Marzo</option>
+      <option value="abril">Abril</option>
+      <option value="mayo">Mayo</option>
+      <option value="junio">Junio</option>
+      <option value="julio">Julio</option>
+      <option value="agosto">Agosto</option>
+      <option value="septiembre">Septiembre</option>
+      <option value="octubre">Octubre</option>
+      <option value="noviembre">Noviembre</option>
+      <option selected value="diciembre">Diciembre</option>
+    </select>
+    <input type="submit" value="Registros del mes">
+  </form>
+ 
+  <footer class="footer_container" id="footer_container"></footer>
+  <script src="/js/index.js"></script>
+</body>
+</html>

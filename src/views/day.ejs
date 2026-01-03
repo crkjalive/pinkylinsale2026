@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="/ico/ico.ico" type="image/x-icon">
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="shortcut icon" href="/ico/ico.ico" type="image/x-icon">
+  <title>🏈 Total por día</title>
+</head>
+
+<body onload="color()">
+  <header id="header_container" class="header_container"></header>
+
+  <h1 class="title_web">🏈 Totales por día</h1>
+
+  <form class="formularioMonth" action="/day/date" method="post">
+    <select class="selects" name="searchMonth" id="">
+      <option value="enero">Enero</option>
+      <option value="febrero">Febrero</option>
+      <option value="marzo">Marzo</option>
+      <option value="abril">Abril</option>
+      <option value="mayo">Mayo</option>
+      <option value="junio">Junio</option>
+      <option value="julio">Julio</option>
+      <option value="agosto">Agosto</option>
+      <option value="septiembre">Septiembre</option>
+      <option value="octubre">Octubre</option>
+      <option value="noviembre">Noviembre</option>
+      <option selected value="diciembre">Diciembre</option>
+    </select>
+    <input type="submit" value="Registros del mes">
+  </form>
+
+  <section>
+    <div class="contenedor_day">
+      <% let totales=0; let utilidades=0; let dato=0;%>
+        <% data.map( (data)=> { %>
+          <div class="registroDay">
+            <div class="fecha">
+              <%= data.registered.toLocaleDateString('en-us', { weekday:"short", year:"numeric", month:"short",
+                day:"numeric"}) %>
+            </div>
+            <div class="prendas">
+              <span>
+                <%= data.prendas==0 ? data.description + ' ' : 'STOCK SOLD ' %>
+              </span>
+              <%= data.prendas !=0 ? data.prendas : '' %>
+            </div>
+            <div class="valorColor mil">
+              <%= data.total %>
+            </div>
+            <div style="display: none;" class="utilidadColor mil">
+              <%= data.utilidad %>
+            </div>
+          </div>
+          <% totales +=data.total %>
+            <% utilidades +=data.utilidad %>
+              <% }) %>
+    </div>
+  </section>
+
+  <div style="display: flex; margin: .5em 1em;color: dodgerblue;">
+    <h3>Datos por rango de color</h3>
+  </div>
+
+  <section class="contenedor_colores">
+
+    <div class="data_colores color dodgerblue">
+      <p>DodgerBlue</p>
+      <div class="valores_colores mil" id="significadoColor"></div>
+    </div>
+
+    <div class="data_colores color azul">
+      <p>BlueDark</p>
+      <div class="valores_colores mil" id="coloruno"></div>
+    </div>
+
+    <div class="data_colores color lime">
+      <p>Lime</p>
+      <div class="valores_colores" id="colordos"></div>
+    </div>
+
+    <div class="data_colores color deeppink">
+      <p>DeepPink</p>
+      <div class="valores_colores" id="colortre"></div>
+    </div>
+
+    <div class="data_colores color gold">
+      <p>Gold</p>
+      <div class="valores_colores" id="colorcua"></div>
+    </div>
+
+    <div class="data_colores color yellow">
+      <p>Rent</p>
+      <div class="valores_colores mil">
+        <%= utilidades - 1857000 %>
+      </div>
+
+    </div>
+
+    <div class="data_colores color biche">
+      <p>Utility</p>
+      <div class="valores_colores mil">
+        <%= utilidades%>
+      </div>
+    </div>
+
+    <div class="data_colores color orange">
+      <p>Full Mounth</p>
+      <div class="valores_colores mil">
+        <%= totales %>
+      </div>
+    </div>
+
+  </section>
+
+
+  <footer class="footer_container" id="footer_container"></footer>
+  <script src="/js/formulaColor.js"></script>
+  <script src="/js/index.js"></script>
+  <script src="/js/mil.js"></script>
+  <script src="/js/color.js" defer></script>
+
+</body>
+
+</html>

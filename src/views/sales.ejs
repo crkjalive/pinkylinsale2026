@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="shortcut icon" href="/ico/ico.ico" type="image/x-icon">
+    <title>🛒 Registro de ventas</title>
+  </head>
+  <body>
+    <header id="header_container" class="header_container"></header>
+    
+    <h1 class="title_web">Registros del día</h1>
+
+    <section class="salesDataDate">
+      <div class="titles_container gridSales">
+        <div class="title">ID</div>
+        <div class="title">Referencia</div>
+        <div class="title">Descripción</div>
+        <div class="title">Pago por</div>
+        <div class="title">Cantidad</div>
+        <div class="title">Precio venta</div>
+        <div class="title">Total</div>
+        <div class="title">Fecha</div>
+        <div class="title">Edit</div>
+        <div class="title">Delete</div>
+      </div>
+
+      <div class="data_container ">
+
+        <% sales.map( indice => { %>
+          <div class="registro gridSales">
+            <div class="data"><%= indice.id_sale %></div>
+            <div class="data"><%= indice.reference %></div>
+            <div class="data"><%= indice.description %></div>
+            <div class="data"><%= indice.payment_method %></div>
+            <div class="data"><%= indice.quantity %></div>
+            <div class="data mil pesos"><%= indice.unit_price %></div>
+            <div class="data mil pesos"><%= indice.quantity * indice.unit_price %></div>
+            <div class="data"><%= indice.registered.toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"}) %></div>
+            
+            <div class="data">
+              <a class="btn-update" href="/sales/update/<%= indice.id_sale %>"> Up </a>
+            </div>
+            <div class="data">
+              <a class="btn-delete" href="/sales/delete/<%= indice.id_sale %>"> Del </a>
+            </div>
+          </div>
+
+        <% }) %>
+
+      </div>
+
+    </section>
+    
+    <footer class="footer_container" id="footer_container"></footer>
+      
+    <script src="/js/index.js"></script>
+    <script src="/js/mil.js"></script>
+  </body>
+</html>
